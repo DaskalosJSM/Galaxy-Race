@@ -70,7 +70,8 @@ public class GameManager : MonoBehaviour
         }
         else if (newGameState == GameState.Game)
         {
-            //TODO: colocar la logica del level 5
+            //TODO: colocar la logica del level 
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Game");
             SceneManager.LoadScene("MapCircuit", LoadSceneMode.Additive);
             SceneManager.LoadScene("PlayerMovement", LoadSceneMode.Additive);
