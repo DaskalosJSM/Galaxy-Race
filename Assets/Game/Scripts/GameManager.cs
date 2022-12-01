@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("MapCircuit", LoadSceneMode.Additive);
             SceneManager.LoadScene("PlayerMovement", LoadSceneMode.Additive);
             SceneManager.LoadScene("UI Elements", LoadSceneMode.Additive);
+            statsManager.isPlaying = true;
         }
         else if (newGameState == GameState.Credits)
         {

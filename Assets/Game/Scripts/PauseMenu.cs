@@ -23,11 +23,13 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         menuPausa.SetActive(true);
+        statsManager.isPlaying = false;
     }
     public void Reanudar()
     {
         Time.timeScale = 1f;
         menuPausa.SetActive(false);
+        statsManager.isPlaying = true;
     }
     public void Reiniciar()
     {
@@ -36,6 +38,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("MapCircuit", LoadSceneMode.Additive);
         SceneManager.LoadScene("PlayerMovement", LoadSceneMode.Additive);
         SceneManager.LoadScene("UI Elements", LoadSceneMode.Additive);
+        statsManager.isPlaying = true;
         statsManager.score = 0;
         statsManager.health = 100;
         statsManager.turbo = 0;
