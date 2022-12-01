@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HoverMovement : MonoBehaviour
 {
-    Rigidbody Rb;
+    Rigidbody rb;
     [SerializeField] float hoverForce = 9f;
     [SerializeField] float hoverHight = 2f;
     public GameObject[] hoverPoints;
@@ -13,10 +13,10 @@ public class HoverMovement : MonoBehaviour
     [SerializeField] float forwardAceleration = 100;
     [SerializeField] float BackwardAceleration = 40f;
 
-    private float currentThrust = 0;
+    private float currentThrust;
 
     [SerializeField] float forceTurn = 10f;
-    [SerializeField] float currentforceTurn = 0f;
+    float currentforceTurn;
 
     [SerializeField] GameObject airBrakeLeft;
     [SerializeField] GameObject airBrakeRight;
@@ -25,7 +25,7 @@ public class HoverMovement : MonoBehaviour
 
     private void Start()
     {
-        Rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
 
         layerMask = 10 << LayerMask.NameToLayer("Ground");
         layerMask = ~layerMask;
@@ -50,51 +50,67 @@ public class HoverMovement : MonoBehaviour
     {
 
         // Aceleration  probar otros valores de zona muerta
-        float acelerationAxis = Input.GetAxis("Vertical");
-
-        if (acelerationAxis > deadZone)
-        {
-            currentThrust = acelerationAxis * forwardAceleration;
-        }
-        else if (acelerationAxis < -deadZone)
-        {
-            currentThrust = acelerationAxis * BackwardAceleration;
-        }
+        currentThrust = 0.0f;
+        float aclAxis = Input.GetAxis("Vertical");
+        if (aclAxis > deadZone)
+            currentThrust = aclAxis * forwardAceleration;
+        else if (aclAxis < -deadZone)
+            currentThrust = aclAxis * BackwardAceleration;
 
         // Turn rpobar valor absoluto 
+        currentforceTurn = 0.0f;
         float turnAxis = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(currentforceTurn) > deadZone)
+        if (Mathf.Abs(turnAxis) > deadZone)
         {
             currentforceTurn = turnAxis;
         }
     }
 
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         // Hover Force
         RaycastHit hit;
- 
-        for ( int i = 0; i < hoverPoints.Length; i++ ){
-            if( Physics.Raycast(hoverPoints[i].transform.position, Vector3.down, out hit, hoverHight, layerMask )){
-                Rb.AddForceAtPosition(Vector3.up * hoverForce * (1f - (hit.distance / hoverHight)), hoverPoints[i].transform.position );
 
-            }else
+        for (int i = 0; i < hoverPoints.Length; i++)
+        {
+            if (Physics.Raycast(hoverPoints[i].transform.position, Vector3.down, out hit, hoverHight, layerMask))
+            {
+                rb.AddForceAtPosition(Vector3.up * hoverForce * (1f - (hit.distance / hoverHight)), hoverPoints[i].transform.position);
+
+            }
+            else
             {
                 if (transform.position.y > hoverPoints[i].transform.position.y)
-                    Rb.AddForceAtPosition(
+                    rb.AddForceAtPosition(
                       hoverPoints[i].transform.up * hoverForce,
                       hoverPoints[i].transform.position);
                 else
-                    Rb.AddForceAtPosition(
+                    rb.AddForceAtPosition(
                       hoverPoints[i].transform.up * -hoverForce,
                       hoverPoints[i].transform.position);
             }
         }
-    if(Mathf.Abs(currentThrust) > 0){
-        Rb.AddForce(transform.forward * currentThrust);
-    }
+
+        // Forward
+
+        if (Mathf.Abs(currentThrust) > 0)
+        {
+            rb.AddForce((transform.forward * currentThrust) * -1);
+        }
+
+        // turn 
+        if (currentforceTurn > 0)
+        {
+            rb.AddRelativeTorque(Vector3.up * currentforceTurn * forceTurn);
+        }
+        else if (currentforceTurn < 0)
+        {
+            rb.AddRelativeTorque(Vector3.up * currentforceTurn * forceTurn);
+        }
+
     }
 
-    // Forward
+
 
 }
