@@ -96,7 +96,7 @@ public class HoverMovement : MonoBehaviour
 
         if (Mathf.Abs(currentThrust) > 0)
         {
-            rb.AddForce((transform.forward * currentThrust) * -1);
+            rb.AddForce((transform.forward * currentThrust));
         }
 
         // turn 
