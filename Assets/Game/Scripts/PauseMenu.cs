@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public StatsManager statsManager;
     [SerializeField] GameObject menuPausa;
+    private void Awake()
+    {
+        statsManager = GameObject.Find("StatsManager").GetComponent<StatsManager>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
@@ -31,6 +36,10 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("MapCircuit", LoadSceneMode.Additive);
         SceneManager.LoadScene("PlayerMovement", LoadSceneMode.Additive);
         SceneManager.LoadScene("UI Elements", LoadSceneMode.Additive);
+        statsManager.score = 0;
+        statsManager.health = 100;
+        statsManager.turbo = 0;
+        statsManager.timeScore = 0;
 
     }
     public void Abandonar()

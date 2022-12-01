@@ -18,12 +18,14 @@ public class GameManager : MonoBehaviour
 {
     // Inicializo el singleton en el primer script 
     public static GameManager sharedInstance;
+    public StatsManager statsManager;
 
     // Declaración del estado del juego
     public GameState currentGameState = GameState.principalMenu;
 
     public void Awake()
     {
+        statsManager = GameObject.Find("StatsManager").GetComponent<StatsManager>();
         // que despierte y enfatizo con el siguiente fragmento
         // Singleton
         if (sharedInstance == null)
@@ -71,6 +73,10 @@ public class GameManager : MonoBehaviour
         else if (newGameState == GameState.Game)
         {
             //TODO: colocar la logica del level 
+            statsManager.score = 0;
+            statsManager.health = 100;
+            statsManager.turbo = 0;
+            statsManager.timeScore = 0;
             Time.timeScale = 1f;
             SceneManager.LoadScene("Game");
             SceneManager.LoadScene("MapCircuit", LoadSceneMode.Additive);
