@@ -179,7 +179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 3fbde013fc1ae0a45a2afb111678bdee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.687
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 3fbde013fc1ae0a45a2afb111678bdee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -382,6 +382,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1893743669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893743666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7549f977c374c43a8e92f06ee34275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverForce: 9
+  hoverHight: 2
+  hoverPoints:
+  - {fileID: 119428473}
+  - {fileID: 1986983466}
+  - {fileID: 1449957171}
+  - {fileID: 1204716297}
+  forwardAceleration: 100
+  BackwardAceleration: 40
+  forceTurn: 10
+  currentforceTurn: 0
+  airBrakeLeft: {fileID: 226761073}
+  airBrakeRight: {fileID: 400554483}
 --- !u!1 &1986983466
 GameObject:
   m_ObjectHideFlags: 0
