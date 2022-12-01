@@ -72,6 +72,9 @@ public class GameManager : MonoBehaviour
         {
             //TODO: colocar la logica del level 5
             SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("MapCircuit", LoadSceneMode.Additive);
+            SceneManager.LoadScene("PlayerMovement", LoadSceneMode.Additive);
+            SceneManager.LoadScene("UI Elements", LoadSceneMode.Additive);
         }
         else if (newGameState == GameState.Credits)
         {
