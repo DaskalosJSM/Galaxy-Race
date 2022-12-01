@@ -27,6 +27,7 @@ public class StatsManager : MonoBehaviour
 
     [Header("References")]
     public GameManager Manager;
+    public bool isPlaying;
     private void Awake()
     {
         if (Stats != null && Stats != this)
@@ -52,6 +53,7 @@ public class StatsManager : MonoBehaviour
         AddTime();
         if (health <= 0)
         {
+            isPlaying = false;
             Manager.GameOver();
             health = 100;
         }
@@ -62,8 +64,11 @@ public class StatsManager : MonoBehaviour
     }
     void AddTime()
     {
-        timeScore += 1 * Time.deltaTime;
-        AddScore(scoreTimeValue * Time.deltaTime);
+        if (isPlaying == true)
+        {
+            timeScore += 1 * Time.deltaTime;
+            AddScore(scoreTimeValue * Time.deltaTime);
+        }
     }
 
 }
