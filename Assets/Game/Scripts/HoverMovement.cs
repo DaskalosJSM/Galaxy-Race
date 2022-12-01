@@ -31,20 +31,20 @@ public class HoverMovement : MonoBehaviour
         layerMask = ~layerMask;
     }
 
-    private void OnDrawGizmos()
-    {
-        RaycastHit hit;
+    // private void OnDrawGizmos()
+    // {
+    //     RaycastHit hit;
 
-        for (int i = 0; i < hoverPoints.Length; i++)
-        {
-            if (Physics.Raycast(hoverPoints[i].transform.position, Vector3.down, out hit, hoverHight, layerMask))
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(hoverPoints[i].transform.position, hit.point);
-                Gizmos.DrawSphere(hit.point, 0.3f);
-            }
-        }
-    }
+    //     for (int i = 0; i < hoverPoints.Length; i++)
+    //     {
+    //         if (Physics.Raycast(hoverPoints[i].transform.position, Vector3.down, out hit, hoverHight, layerMask))
+    //         {
+    //             Gizmos.color = Color.red;
+    //             Gizmos.DrawLine(hoverPoints[i].transform.position, hit.point);
+    //             Gizmos.DrawSphere(hit.point, 0.3f);
+    //         }
+    //     }
+    // }
 
     private void Update()
     {
@@ -96,7 +96,8 @@ public class HoverMovement : MonoBehaviour
 
         if (Mathf.Abs(currentThrust) > 0)
         {
-            rb.AddForce((transform.forward * currentThrust));
+            //rb.AddForce((transform.forward * currentThrust));
+            rb.AddRelativeForce(transform.forward * currentThrust );
         }
 
         // turn 
