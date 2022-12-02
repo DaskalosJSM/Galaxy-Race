@@ -32,7 +32,6 @@ public class DetectorGround : MonoBehaviour
             {
                 Movement.hoverHight = 0;
             }
-            Movement.hoverHight = 3;
         }
 
     }
