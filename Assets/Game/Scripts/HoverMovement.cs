@@ -27,6 +27,8 @@ public class HoverMovement : MonoBehaviour
     [SerializeField] GameObject currentPlatform;
     [SerializeField] GameObject previousPlatform;
 
+    public GameObject currentPrefab;
+    public GameObject previousPrefab;
 
 
     private int layerMask;
@@ -66,6 +68,7 @@ public class HoverMovement : MonoBehaviour
         }
 
         aclAxis = Input.GetAxis("Vertical");
+        
         moveForward = (Vector3.forward * aclAxis).normalized;
 
         // Turn rpobar valor absoluto 
