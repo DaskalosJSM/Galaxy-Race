@@ -45,7 +45,7 @@ public class SpawnManager : MonoBehaviour
             lastObject = tracks[0];
             lastObject = Instantiate(lastObject, startPoint.position, startPoint.rotation);
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < MaxTracks; i++)
             {
                 Transform nextPoint = lastObject.transform.Find("Pivote");
                 lastObject = Instantiate(lastObject, nextPoint.position, nextPoint.rotation);
@@ -53,7 +53,7 @@ public class SpawnManager : MonoBehaviour
             }
 
         }
-        InvokeRepeating("MoveRoad",1f,0.5f);
+        InvokeRepeating("MoveRoad",1f,1f);
     }
     public void MoveRoad()
     {
@@ -77,7 +77,7 @@ public class SpawnManager : MonoBehaviour
     public void DestroyPlatform (GameObject platform)
     {
         currentTracks--;
-        Destroy(platform.transform.root.gameObject, 6);
+        Destroy(platform.transform.root.gameObject, 4);
     }
 
 }

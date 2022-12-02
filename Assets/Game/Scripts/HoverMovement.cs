@@ -10,7 +10,7 @@ public class HoverMovement : MonoBehaviour
     public Rigidbody rb;
 
     [SerializeField] float hoverForce = 9f;
-    public float hoverHight = 2f;
+    public float hoverHight = 4f;
     public GameObject[] hoverPoints;
     private float deadZone = 0.1f;
     public float forwardAceleration = 100;
@@ -32,20 +32,20 @@ public class HoverMovement : MonoBehaviour
         layerMask = ~layerMask;
     }
 
-    // private void OnDrawGizmos()
-    // {
-    //     RaycastHit hit;
+    private void OnDrawGizmos()
+    {
+        RaycastHit hit;
 
-    //     for (int i = 0; i < hoverPoints.Length; i++)
-    //     {
-    //         if (Physics.Raycast(hoverPoints[i].transform.position, Vector3.down, out hit, hoverHight, layerMask))
-    //         {
-    //             Gizmos.color = Color.red;
-    //             Gizmos.DrawLine(hoverPoints[i].transform.position, hit.point);
-    //             Gizmos.DrawSphere(hit.point, 0.3f);
-    //         }
-    //     }
-    // }
+        for (int i = 0; i < hoverPoints.Length; i++)
+        {
+            if (Physics.Raycast(hoverPoints[i].transform.position, Vector3.down, out hit, hoverHight, layerMask))
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(hoverPoints[i].transform.position, hit.point);
+                Gizmos.DrawSphere(hit.point, 0.3f);
+            }
+        }
+    }
 
     private void Update()
     {
@@ -61,8 +61,7 @@ public class HoverMovement : MonoBehaviour
         {
             StatsManager.speed *= -1;
         }
-
-
+       
         aclAxis = Input.GetAxis("Vertical");
 
         moveForward = (Vector3.forward * aclAxis).normalized;
@@ -132,7 +131,7 @@ public class HoverMovement : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Deathzone"))
         {
-             Manager.GameOver();
+            Manager.GameOver();
         }
     }
     private void OnCollisionEnter(Collision other)

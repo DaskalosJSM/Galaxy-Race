@@ -303,7 +303,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362703824}
-  m_LocalRotation: {x: 0.31111002, y: 0.06222012, z: -0.020416597, w: 0.94811517}
+  m_LocalRotation: {x: 0.31111002, y: 0.062220052, z: -0.0204166, w: 0.94811517}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -381,7 +381,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367594106}
-  m_LocalRotation: {x: 0.27646452, y: 0.0629207, z: -0.018142981, w: 0.95879054}
+  m_LocalRotation: {x: 0.27646452, y: 0.06292063, z: -0.018142987, w: 0.95879054}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -717,7 +717,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.11701396, y: -0.0022716618, z: 0.0002676555, w: 0.99312764}
+  m_LocalRotation: {x: 0.11701396, y: -0.0022716622, z: 0.00026765556, w: 0.99312764}
   m_LocalPosition: {x: 0.041172042, y: 4.36, z: -4.6399055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1283,7 +1283,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893667261}
-  m_LocalRotation: {x: 0.29381287, y: 0.06258118, z: -0.019281471, w: 0.9536173}
+  m_LocalRotation: {x: 0.29381287, y: 0.062581114, z: -0.019281473, w: 0.9536173}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1384,29 +1384,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StatsManager: {fileID: 0}
-
-
   Manager: {fileID: 0}
   rb: {fileID: 0}
-  hoverForce: 1000
-  hoverHight: 1.1
-
+  hoverForce: 9
+  hoverHight: 3
   hoverPoints:
   - {fileID: 119428473}
   - {fileID: 1986983466}
   - {fileID: 1449957171}
   - {fileID: 1204716297}
-
-  forwardAceleration: 2500
-  BackwardAceleration: 2000
-  forceTurn: 450
-  airBrakeLeft: {fileID: 226761073}
-  airBrakeRight: {fileID: 400554483}
-  currentPlatform: {fileID: 0}
-  previousPlatform: {fileID: 0}
-  currentPrefab: {fileID: 0}
-  previousPrefab: {fileID: 0}
-
+  forwardAceleration: 3500
+  forceTurn: 1500
 --- !u!114 &1893743670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,13 +1402,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893743666}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a7c7acec7998cf4e817711f1ea62008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlatform: {fileID: 0}
   PreviousPlatform: {fileID: 0}
+  Manager: {fileID: 0}
+  Movement: {fileID: 0}
 --- !u!1 &1986983466
 GameObject:
   m_ObjectHideFlags: 0
