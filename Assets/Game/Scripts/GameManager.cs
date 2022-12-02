@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
-        statsManager = GameObject.Find("StatsManager").GetComponent<StatsManager>();
         // que despierte y enfatizo con el siguiente fragmento
         // Singleton
         if (sharedInstance == null)
@@ -34,7 +33,10 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
-
+    void Start()
+    {
+        statsManager = GameObject.Find("StatsManager").GetComponent<StatsManager>();
+    }
     // Función encargado de iniciar la scena menú principal
     public void PrincipalMenu()
     {

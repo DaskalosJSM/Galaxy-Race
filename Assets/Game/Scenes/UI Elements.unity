@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d2b4ed3ea378a44b85d930f3e81997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsManager: {fileID: 0}
+  statsManager: {fileID: 722239762}
   currentGameState: 1
 --- !u!4 &646800042
 Transform:
@@ -1389,7 +1389,7 @@ MonoBehaviour:
   score: 0
   timeScore: 0
   scoreTimeValue: 2
-  Manager: {fileID: 0}
+  Manager: {fileID: 646800041}
   isPlaying: 0
 --- !u!4 &722239763
 Transform:
@@ -3145,7 +3145,7 @@ MonoBehaviour:
   timeText: {fileID: 1528429283}
   velocityText: {fileID: 1501931168}
   healthText: {fileID: 1892350996}
-  Stats: {fileID: 0}
+  Stats: {fileID: 722239762}
 --- !u!4 &2068113138
 Transform:
   m_ObjectHideFlags: 0
