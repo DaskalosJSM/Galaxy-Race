@@ -131,6 +131,7 @@ public class HoverMovement : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Deathzone"))
         {
+            StatsManager.isPlaying = false;
             Manager.GameOver();
         }
     }
