@@ -13,6 +13,25 @@ public class SpawnManager : MonoBehaviour
 
     public Transform startPoint;
 
+    private int currentTracks = 0;
+    public int MaxTracks = 20;
+
+    public static SpawnManager Instance;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            SpawnManager.Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+
+
     void Start()
     {
         if (tracks != null && tracks.Count > 0)
@@ -26,14 +45,21 @@ public class SpawnManager : MonoBehaviour
             lastObject = tracks[0];
             lastObject = Instantiate(lastObject, startPoint.position, startPoint.rotation);
 
+            for (int i = 0; i < 10; i++)
+            {
+                Transform nextPoint = lastObject.transform.Find("Pivote");
+                lastObject = Instantiate(lastObject, nextPoint.position, nextPoint.rotation);
+
+            }
+
         }
         InvokeRepeating("MoveRoad",1f,0.5f);
     }
     public void MoveRoad()
     {
-        if(lastObject != null)
+        if(currentTracks >= 15)
         {
-           
+            return;
         }
 
         Transform nextPoint = lastObject.transform.Find("Pivote");
@@ -44,21 +70,14 @@ public class SpawnManager : MonoBehaviour
 
         lastObject.transform.SetParent(null);
 
-        DestroyElement(lastObject.gameObject);
-
-       /* if(lastObject != null)
-             pivote = moveroad.transform.GetChild(2).GetComponent<Transform>();
-                  
-        Instantiate(moveroad, pivote.position +(transform.forward *2),pivote.rotation);
-        
-        tracks.Add(moveroad);
-        lastObject = moveroad;*/
-
+        currentTracks++;
+       
     }
 
-    private void DestroyElement (GameObject element)
+    public void DestroyPlatform (GameObject platform)
     {
-        Destroy(element, 10f);
+        currentTracks--;
+        Destroy(platform.transform.root.gameObject, 5);
     }
 
 }

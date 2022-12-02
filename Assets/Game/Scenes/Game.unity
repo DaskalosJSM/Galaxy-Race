@@ -152,7 +152,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1060973666
 GameObject:
@@ -185,10 +185,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks:
   - {fileID: 2307234070188962479, guid: bb5174b509770904eab06c808be2fb24, type: 3}
-  - {fileID: 5815947045941836965, guid: ea84738a019bd104c92f4e6cf4cbc7cb, type: 3}
   - {fileID: 457944949611930253, guid: a8092546db0336045b9383467dd5731c, type: 3}
+  - {fileID: 5815947045941836965, guid: ea84738a019bd104c92f4e6cf4cbc7cb, type: 3}
   - {fileID: 2307234070188962479, guid: bb5174b509770904eab06c808be2fb24, type: 3}
   startPoint: {fileID: 897375455}
+  MaxTracks: 20
 --- !u!4 &1060973668
 Transform:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1204580662
 GameObject:
@@ -296,5 +297,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
