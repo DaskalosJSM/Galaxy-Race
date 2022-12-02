@@ -51,6 +51,7 @@ public class StatsManager : MonoBehaviour
     void Update()
     {
         AddTime();
+        AddTurbo();
         if (health <= 0)
         {
             isPlaying = false;
@@ -70,5 +71,11 @@ public class StatsManager : MonoBehaviour
             AddScore(scoreTimeValue * Time.deltaTime);
         }
     }
-
+    void AddTurbo()
+    {
+        if (isPlaying == true)
+        {
+            turbo += 2 * Time.deltaTime;
+        }
+    }
 }

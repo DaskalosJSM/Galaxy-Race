@@ -59,12 +59,12 @@ public class HoverMovement : MonoBehaviour
     private void Update()
     {
         // UI conection
-        StatsManager.speed = rb.velocity.z;
+        StatsManager.speed = rb.velocity.z*10;
         if (StatsManager.speed < 0)
         {
             StatsManager.speed *= -1;
         }
-        
+
         aclAxis = Input.GetAxis("Vertical");
         moveForward = (Vector3.forward * aclAxis).normalized;
 
