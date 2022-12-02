@@ -8,6 +8,7 @@ TagManager:
   - Points
   - Deathzone
   - Platform
+  - Turbo
   layers:
   - Default
   - TransparentFX

@@ -42,7 +42,7 @@ public class StatsManager : MonoBehaviour
     }
     void Start()
     {
-        //Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         score = 0;
         health = 100;
         turbo = 0;

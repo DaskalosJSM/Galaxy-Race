@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
 
     GameObject lastObject;
     Transform pivote;
-    private float offset = 4f;
+    //private float offset = 4f;
 
     public Transform startPoint;
 
@@ -57,7 +57,7 @@ public class SpawnManager : MonoBehaviour
     }
     public void MoveRoad()
     {
-        if(currentTracks >= 15)
+        if(currentTracks >= MaxTracks)
         {
             return;
         }
@@ -77,7 +77,7 @@ public class SpawnManager : MonoBehaviour
     public void DestroyPlatform (GameObject platform)
     {
         currentTracks--;
-        Destroy(platform.transform.root.gameObject, 5);
+        Destroy(platform.transform.root.gameObject, 6);
     }
 
 }
