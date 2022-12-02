@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class HoverMovement : MonoBehaviour
 {
-    Rigidbody rb;
+    public StatsManager StatsManager;
+    public Rigidbody rb;
     [SerializeField] float hoverForce = 9f;
     [SerializeField] float hoverHight = 2f;
     public GameObject[] hoverPoints;
     private float deadZone = 0.1f;
 
-    [SerializeField] float forwardAceleration = 100;
+    public float forwardAceleration = 100;
     [SerializeField] float BackwardAceleration = 40f;
 
     private float currentThrust;
@@ -33,6 +34,7 @@ public class HoverMovement : MonoBehaviour
 
     private void Start()
     {
+        StatsManager = GameObject.Find("StatsManager").GetComponent<StatsManager>();
         rb = GetComponent<Rigidbody>();
 
         layerMask = 10 << LayerMask.NameToLayer("Ground");
@@ -56,6 +58,13 @@ public class HoverMovement : MonoBehaviour
 
     private void Update()
     {
+        // UI conection
+        StatsManager.speed = rb.velocity.z;
+        if (StatsManager.speed < 0)
+        {
+            StatsManager.speed *= -1;
+        }
+        
         aclAxis = Input.GetAxis("Vertical");
         moveForward = (Vector3.forward * aclAxis).normalized;
 

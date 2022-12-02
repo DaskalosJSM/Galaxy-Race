@@ -1380,12 +1380,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc386f0773beb94fb4764bfe8e64304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementPlayer: {fileID: 0}
   turbo: 0
   maxTurbo: 100
   health: 0
   maxHealth: 100
   speed: 0
-  maxSpeed: 300
+  maxSpeed: 20
   score: 0
   timeScore: 0
   scoreTimeValue: 2
