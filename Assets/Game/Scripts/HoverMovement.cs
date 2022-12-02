@@ -5,30 +5,18 @@ using UnityEngine;
 public class HoverMovement : MonoBehaviour
 {
     public StatsManager StatsManager;
-    Rigidbody rb;
+
+    public GameManager Manager;
+    public Rigidbody rb;
+
     [SerializeField] float hoverForce = 9f;
     [SerializeField] float hoverHight = 2f;
     public GameObject[] hoverPoints;
     private float deadZone = 0.1f;
-
     public float forwardAceleration = 100;
-    [SerializeField] float BackwardAceleration = 40f;
-
-    private float currentThrust;
-
     [SerializeField] float forceTurn = 10f;
     float currentforceTurn;
-
-    bool isGrounded = true;
     Vector3 moveForward;
-
-    [SerializeField] GameObject airBrakeLeft;
-    [SerializeField] GameObject airBrakeRight;
-    [SerializeField] GameObject currentPlatform;
-    [SerializeField] GameObject previousPlatform;
-
-    public GameObject currentPrefab;
-    public GameObject previousPrefab;
 
 
     private int layerMask;
@@ -36,6 +24,7 @@ public class HoverMovement : MonoBehaviour
 
     private void Start()
     {
+        Manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         StatsManager = GameObject.Find("StatsManager").GetComponent<StatsManager>();
         rb = GetComponent<Rigidbody>();
 
@@ -60,15 +49,22 @@ public class HoverMovement : MonoBehaviour
 
     private void Update()
     {
-       // UI conection
-       StatsManager.speed = rb.velocity.z;
-       if (StatsManager.speed < 0)
-       {
-           StatsManager.speed *= -1;
-       }
-        
+
+        if (Input.GetKey(KeyCode.Space) && StatsManager.turbo > 0)
+        {
+            forwardAceleration = 7000;
+            StatsManager.turbo -= 10 * Time.deltaTime;
+        }
+        // UI conection
+        StatsManager.speed = rb.velocity.z * 10;
+        if (StatsManager.speed < 0)
+        {
+            StatsManager.speed *= -1;
+        }
+
+
         aclAxis = Input.GetAxis("Vertical");
-        
+
         moveForward = (Vector3.forward * aclAxis).normalized;
 
         // Turn rpobar valor absoluto 
@@ -120,7 +116,31 @@ public class HoverMovement : MonoBehaviour
         }
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
 
+        if (other.gameObject.CompareTag("Points"))
+        {
+            Destroy(other.gameObject);
 
+            StatsManager.score += 10;
+        }
+        if (other.gameObject.CompareTag("Turbo"))
+        {
+            Destroy(other.gameObject);
+            StatsManager.turbo += 50;
+        }
+         if (other.gameObject.CompareTag("Deathzone"))
+        {
+            Manager.GameOver();
+        }
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Guards"))
+        {
+            StatsManager.health -= 5;
+        }
+    }
 
 }

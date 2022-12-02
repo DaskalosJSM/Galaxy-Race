@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Guards
+  - Points
+  - Deathzone
   - Platform
+  - Turbo
   layers:
   - Default
   - TransparentFX

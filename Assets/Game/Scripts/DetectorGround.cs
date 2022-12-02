@@ -21,8 +21,6 @@ public class DetectorGround : MonoBehaviour
             {
                 currentPlatform = currentGO;
             }
-
-
         }
 
     }
@@ -38,9 +36,6 @@ public class DetectorGround : MonoBehaviour
             
             PreviousPlatform = currentPlatform;
         }
-            
-
-
     }
 
 
