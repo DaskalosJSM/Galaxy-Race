@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/Screens Scenes/Controls.unity
     guid: 439ae9178aa25ed4eacb89407396799e
   - enabled: 1
-    path: Assets/Game/Scenes/MapCircuit.unity
-    guid: 9b4765b30f9d5bc4c86c571fe17daca5
-  - enabled: 1
     path: Assets/Game/Scenes/PlayerMovement.unity
     guid: 5dcd6116ec8879c4f817c7acf5c8724d
   - enabled: 1
