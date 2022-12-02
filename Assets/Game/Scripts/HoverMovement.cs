@@ -8,7 +8,7 @@ public class HoverMovement : MonoBehaviour
     public GameManager Manager;
     public Rigidbody rb;
     [SerializeField] float hoverForce = 9f;
-    [SerializeField] float hoverHight = 2f;
+    public float hoverHight = 2f;
     public GameObject[] hoverPoints;
     private float deadZone = 0.1f;
     public float forwardAceleration = 100;
@@ -126,9 +126,9 @@ public class HoverMovement : MonoBehaviour
             Destroy(other.gameObject);
             StatsManager.turbo += 50;
         }
-         if (other.gameObject.CompareTag("Deathzone"))
+        if (other.gameObject.CompareTag("Deathzone"))
         {
-            Manager.GameOver();
+             Manager.GameOver();
         }
     }
     private void OnCollisionEnter(Collision other)
