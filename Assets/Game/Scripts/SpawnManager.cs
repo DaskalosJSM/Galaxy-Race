@@ -58,7 +58,7 @@ public class SpawnManager : MonoBehaviour
 
     private void DestroyElement (GameObject element)
     {
-        Destroy(element, 5f);
+        Destroy(element, 10f);
     }
 
 }

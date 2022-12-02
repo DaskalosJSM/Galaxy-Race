@@ -18,10 +18,18 @@ public class HoverMovement : MonoBehaviour
     [SerializeField] float forceTurn = 10f;
     float currentforceTurn;
 
+    bool isGrounded = true;
+    Vector3 moveForward;
+
     [SerializeField] GameObject airBrakeLeft;
     [SerializeField] GameObject airBrakeRight;
+    [SerializeField] GameObject currentPlatform;
+    [SerializeField] GameObject previousPlatform;
+
+
 
     private int layerMask;
+    float aclAxis;
 
     private void Start()
     {
@@ -48,14 +56,8 @@ public class HoverMovement : MonoBehaviour
 
     private void Update()
     {
-
-        // Aceleration  probar otros valores de zona muerta
-        currentThrust = 0.0f;
-        float aclAxis = Input.GetAxis("Vertical");
-        if (aclAxis > deadZone)
-            currentThrust = aclAxis * forwardAceleration;
-        else if (aclAxis < -deadZone)
-            currentThrust = aclAxis * BackwardAceleration;
+        aclAxis = Input.GetAxis("Vertical");
+        moveForward = (Vector3.forward * aclAxis).normalized;
 
         // Turn rpobar valor absoluto 
         currentforceTurn = 0.0f;
@@ -77,7 +79,6 @@ public class HoverMovement : MonoBehaviour
             if (Physics.Raycast(hoverPoints[i].transform.position, Vector3.down, out hit, hoverHight, layerMask))
             {
                 rb.AddForceAtPosition(Vector3.up * hoverForce * (1f - (hit.distance / hoverHight)), hoverPoints[i].transform.position);
-
             }
             else
             {
@@ -94,10 +95,7 @@ public class HoverMovement : MonoBehaviour
 
         // Forward
 
-        if (Mathf.Abs(currentThrust) > 0)
-        {
-            rb.AddRelativeForce(transform.forward * currentThrust);
-        }
+        rb.AddRelativeForce(Vector3.forward * forwardAceleration * aclAxis);
 
         // turn 
         if (currentforceTurn > 0)
