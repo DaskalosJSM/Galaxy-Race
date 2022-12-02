@@ -5,8 +5,10 @@ using UnityEngine;
 public class HoverMovement : MonoBehaviour
 {
     public StatsManager StatsManager;
+
     public GameManager Manager;
     public Rigidbody rb;
+
     [SerializeField] float hoverForce = 9f;
     [SerializeField] float hoverHight = 2f;
     public GameObject[] hoverPoints;
@@ -47,6 +49,7 @@ public class HoverMovement : MonoBehaviour
 
     private void Update()
     {
+
         if (Input.GetKey(KeyCode.Space) && StatsManager.turbo > 0)
         {
             forwardAceleration = 7000;
@@ -58,6 +61,7 @@ public class HoverMovement : MonoBehaviour
         {
             StatsManager.speed *= -1;
         }
+
 
         aclAxis = Input.GetAxis("Vertical");
 
