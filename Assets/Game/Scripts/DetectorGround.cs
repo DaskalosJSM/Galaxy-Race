@@ -43,10 +43,15 @@ public class DetectorGround : MonoBehaviour
         {
             if (PreviousPlatform)
             {
-                SpawnManager.Instance.DestroyPlatform(PreviousPlatform.transform.root.gameObject);
+                Invoke("DestroypreviousPlatform", 3.0f);
             }
 
             PreviousPlatform = currentPlatform;
         }
+    }
+
+    private void DestroypreviousPlatform()
+    {
+        SpawnManager.Instance.DestroyPlatform(PreviousPlatform.transform.root.gameObject);
     }
 }
