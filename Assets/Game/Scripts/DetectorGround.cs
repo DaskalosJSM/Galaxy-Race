@@ -43,7 +43,7 @@ public class DetectorGround : MonoBehaviour
         {
             if (PreviousPlatform)
             {
-                Invoke("DestroypreviousPlatform", 3.0f);
+                Invoke("DestroypreviousPlatform", 4.0f);
             }
 
             PreviousPlatform = currentPlatform;
