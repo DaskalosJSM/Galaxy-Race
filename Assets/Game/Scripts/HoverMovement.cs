@@ -56,7 +56,7 @@ public class HoverMovement : MonoBehaviour
             StatsManager.turbo -= 10 * Time.deltaTime;
         }
         // UI conection
-        StatsManager.speed = rb.velocity.z * 10;
+        StatsManager.speed = rb.velocity.magnitude * 10;
         if (StatsManager.speed < 0)
         {
             StatsManager.speed *= -1;
