@@ -189,7 +189,7 @@ MonoBehaviour:
   - {fileID: 457944949611930253, guid: a8092546db0336045b9383467dd5731c, type: 3}
   - {fileID: 2307234070188962479, guid: bb5174b509770904eab06c808be2fb24, type: 3}
   startPoint: {fileID: 897375455}
-  MaxTracks: 4
+  MaxTracks: 8
 --- !u!4 &1060973668
 Transform:
   m_ObjectHideFlags: 0

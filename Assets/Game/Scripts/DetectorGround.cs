@@ -18,8 +18,8 @@ public class DetectorGround : MonoBehaviour
 
     private void Update()
     {
-        Vector3 direction = transform.up - this.transform.position;
-        Debug.DrawRay(this.transform.position, direction, Color.red);
+        Debug.DrawRay(this.transform.position, Vector3.down, Color.red);
+
         RaycastHit hit;
 
         if (Physics.Raycast(this.transform.position, Vector3.down, out hit))
@@ -41,12 +41,11 @@ public class DetectorGround : MonoBehaviour
     {
         if (PreviousPlatform != currentPlatform)
         {
-            if (PreviousPlatform)
+            if (currentPlatform)
             {
-                Invoke("DestroypreviousPlatform", 4.0f);
+                PreviousPlatform = currentPlatform;
             }
-
-            PreviousPlatform = currentPlatform;
+            Invoke("DestroypreviousPlatform", 8.0f);
         }
     }
 
